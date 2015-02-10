@@ -6,6 +6,13 @@
 int 
 interpreter(char *code)
 {
+	/*
+	 *No error handling has been done. 
+	 *If the program contains some unexpected characters the compiler will
+	 * just ignore them. Which is what the "specs" say. 
+	 * This includes whitespaces and newlines. 
+	 * This can be used as a powerful feature of the language to add comments wherever necessary :P
+	 */
 	int data[MAXSIZE];
 	int stack[STACKSIZE];
 	int dp = MAXSIZE/2;
@@ -55,6 +62,7 @@ interpreter(char *code)
 		}
 		pc++;
 	}
+	return 0;
 }
 
 int 
