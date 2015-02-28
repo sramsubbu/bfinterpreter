@@ -1,5 +1,5 @@
 NAME= bfinterpreter
-CFLAGS = -Wall -Wextra -rdynamic $(OPTFLAGS)
+CFLAGS = -Wall -Wextra -rdynamic -Iincludes $(OPTFLAGS)
 
 SOURCES= $(wildcard src/*.c)
 OBJECTS= $(patsubst src/%.c,bin/%.o,$(SOURCES))
