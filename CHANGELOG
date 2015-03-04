@@ -1,0 +1,32 @@
+28-02-15 Ramasubramanian S <sramsubu@gmail.com>
+
+  * Makefile added
+
+M	Makefile
+  * Restructured the dev tree. Added a makefile.
+
+M	Makefile
+A	sampleprogs/hw.bf
+D	src/a.out
+D	src/hw.bf
+  * A note about unexpected characters is added to the code
+
+A	Makefile
+M	src/interpreter.c
+  * created a working version of the interpreter.
+
+A	src/a.out
+A	src/hw.bf
+A	src/interpreter.c
+  * Initial commit
+
+A	Meta.cfg
+A	README
+A	TODO
+c/interpreter.c
+*******************************
+Initial commit
+
+A	Meta.cfg
+A	README
+A	TODO
