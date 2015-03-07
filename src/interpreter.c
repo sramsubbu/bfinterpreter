@@ -66,14 +66,10 @@ interpreter(char *code)
 }
 
 int 
-main(int argc,char *argv[])
-{
-	if(argc != 2){
-		fprintf(stderr,"Filename required.\n");
-		return 1;
-	}
+interpret_file(const char *filename)
+{	
 	FILE *fp;
-	fp = fopen(argv[1],"r");
+	fp = fopen(filename,"r");
 	char *code;
 	unsigned long len;
 	fseek(fp,0,SEEK_END);

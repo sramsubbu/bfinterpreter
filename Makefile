@@ -1,5 +1,5 @@
-NAME= bfinterpreter
-CFLAGS = -Wall -Wextra -rdynamic -Iincludes $(OPTFLAGS)
+NAME= bfl
+CFLAGS = -Wall -Wextra -Iincludes $(OPTFLAGS)
 
 SOURCES= $(wildcard src/*.c)
 OBJECTS= $(patsubst src/%.c,bin/%.o,$(SOURCES))
@@ -10,7 +10,7 @@ bin/%.o: src/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(CFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) -o $@ $(OBJECTS)
 
 
 clean: 
