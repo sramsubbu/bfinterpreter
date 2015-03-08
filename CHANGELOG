@@ -1,5 +1,28 @@
-28-02-15 Ramasubramanian S <sramsubu@gmail.com>
+08-03-15 Ramasubramanian S <sramsubu@gmail.com>
 
+  * Command line acceptance of the program ready.
+
+M	TODO
+A	includes/bf.h
+M	src/bftoc.c
+M	src/interpreter.c
+M	src/main.c
+A	tests/compile
+A	tests/test
+A	tests/test_bftoc.c
+  * Added a main.c and made some changes
+
+M	Makefile
+D	Meta.cfg
+M	src/interpreter.c
+A	src/main.c
+  * Added a file bftoc that converts .bf to a .c file
+
+A	src/bftoc.c
+  * Added a changelog and updated the TODO
+
+A	CHANGELOG
+M	TODO
   * Makefile added
 
 M	Makefile
@@ -19,13 +42,6 @@ A	src/a.out
 A	src/hw.bf
 A	src/interpreter.c
   * Initial commit
-
-A	Meta.cfg
-A	README
-A	TODO
-c/interpreter.c
-*******************************
-Initial commit
 
 A	Meta.cfg
 A	README

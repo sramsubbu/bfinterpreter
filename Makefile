@@ -11,10 +11,13 @@ bin/%.o: src/%.c
 
 $(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) -o $@ $(OBJECTS)
+	help2man $(TARGET) doc/$(NAME).1
 
+install:
+	install $(TARGET) /usr/bin/
+	install doc/$(NAME).1 /usr/share/man/man1/
 
 clean: 
-	rm -rf bin/*
-	rm -rf *.out */*.out
+	rm -rf bin/*.o
 
 
