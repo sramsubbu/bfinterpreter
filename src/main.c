@@ -1,5 +1,8 @@
 #include <argp.h>
 #include <stdlib.h>
+#include <bf.h>
+
+#include <string.h>  //for strlen
 const char *argp_program_version = 
 	"bfl 0.1";
 const char *program_bug_address = 
@@ -11,14 +14,16 @@ static char doc[] =
 static char args_doc[] = "SRC_FILE";
 
 static struct argp_option options[] = {
+	{"output",  'o', "FILE", 0, "Output file to be used while compiling"},
 	{"compile", 'c', 0,      0, "Compiler to a .c file instead of executing"},
-	{"debug",  'd', 0,     0,  "Enable debugging"},
+	{"debug",   'd', 0,      0,  "Enable debugging"},
 	{0}
 };
 
 struct arguments
 {
 	char *src_file;
+	int compile;
 	char *output_file;
 	int debug;
 };
@@ -31,6 +36,9 @@ parse_opt(int key,char *arg,struct argp_state *state)
 	{
 		case 'd':
 			arguments->debug = 1; 
+			break;
+		case 'c':
+			arguments->compile = 1;
 			break;
 		case 'o':
 			arguments->output_file = arg;
@@ -58,16 +66,17 @@ main(int argc,char *argv[])
 {
 	struct arguments arguments;
 	int ret;
+	code_t code;
 
 	arguments.debug = 0;
-	arguments.output_file = "-";
+	arguments.output_file = "tmp.c";
 	argp_parse(&argp,argc,argv,0,0,&arguments);
-
-	ret = interpret_file(arguments.src_file);
-	if(ret == 0)
-		printf("File executed successfully\n");
+		
+	code = read_file(arguments.src_file);
+	if(arguments.compile)
+		ret = bftoc(code,arguments.output_file);
 	else
-		printf("Error(s) occured %d\n",ret);
-	exit(0);
+		ret  = interpret_file(code);
+	exit(ret);
 }
 

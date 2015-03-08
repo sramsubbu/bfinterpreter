@@ -1,4 +1,3 @@
-* modify the whole package to fit the coding standards of GNU
 * add a compiler that converts the code to the assembly 
 * modify the interpreter to use the front-end of the compiler for syntax checks
 

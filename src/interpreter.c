@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <bf.h>
 #define MAXSIZE 1000
 #define STACKSIZE 500
 
 int 
-interpreter(char *code)
+interpret_file(code_t co)
 {
 	/*
 	 *No error handling has been done. 
@@ -19,6 +20,7 @@ interpreter(char *code)
 	int SP = -1;
 	int i;
 	long pc=0;
+	char *code = co.code;
 
 	for(i=0;i<MAXSIZE;i++)
 		data[i] = 0;
@@ -65,22 +67,25 @@ interpreter(char *code)
 	return 0;
 }
 
-int 
-interpret_file(const char *filename)
+code_t
+read_file(const char *filename)
 {	
 	FILE *fp;
 	fp = fopen(filename,"r");
-	char *code;
-	unsigned long len;
+	code_t code;
+
+	//number of chars in the file
 	fseek(fp,0,SEEK_END);
-	len = (unsigned long)ftell(fp);
+	code.length = (unsigned long)ftell(fp);
 	fseek(fp,0,SEEK_SET);
-	code = (char *)malloc(sizeof(char)*(len+1));
+
+	code.code = (char *)malloc(sizeof(char)*(code.length+1));
 	int c;
 	while( (c=fgetc(fp))!=EOF)
-		*code++ = c;
-	*code='\0';
-	code -= len;
-	interpreter(code);
-	return 0;
+		*(code.code)++ = c;
+	*(code.code)='\0';
+	code.code -= code.length;
+	return code;
+//	interpreter(code);
+//	return 0;
 }

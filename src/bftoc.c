@@ -2,6 +2,8 @@
  * compiles a bf file to a c file.
  */
 #include <stdio.h>
+#include <stdlib.h>
+#include <bf.h>
 #define MAXSIZE 400
 
 static FILE *
@@ -23,13 +25,17 @@ close_outfile(FILE *outfile)
 }
 
 int 
-bftoc(char *code,int length,const char *output)
+bftoc(code_t code,const char *output)
 {
 	int i;
 	//Initialise the c file
 	FILE *outfile = init_outfile(output);
-	for(i=0;i<length;i++) {
-		switch(code[i]) {
+	if(outfile == NULL) {
+		printf("Cannot open file\n");
+		exit(1);
+	}
+	for(i=0;i<code.length;i++) {
+		switch(code.code[i]) {
 			case '<':
 				fprintf(outfile,"dp--;\n");
 				break;
