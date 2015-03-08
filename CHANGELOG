@@ -1,5 +1,21 @@
 08-03-15 Ramasubramanian S <sramsubu@gmail.com>
 
+  * Added license and readme text
+
+A	COPYING
+M	src/bftoc.c
+A	src/bftoc.c~
+M	src/interpreter.c
+A	src/interpreter.c~
+M	src/main.c
+A	src/main.c~
+  * Added Changelog and a man page
+
+M	CHANGELOG
+M	Makefile
+D	README
+D	TODO
+A	doc/bfl.1
   * Command line acceptance of the program ready.
 
 M	TODO

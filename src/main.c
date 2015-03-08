@@ -12,13 +12,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #include <argp.h>
 #include <stdlib.h>
 #include <bf.h>
 
-#include <string.h>  //for strlen
 const char *argp_program_version = 
-	"bfl 0.1";
+	"bfl 0.2";
 const char *program_bug_address = 
 	"<sramsubu@gmail.com>";
 
