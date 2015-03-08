@@ -1,0 +1,26 @@
+							bfl 0.2
+			another interpreter for the brainfuck language
+				Copyright (c) 2015 Ramasubramanian S
+
+bfl is just another interpreter for the brainfuck language.
+
+REQUIREMENTS:
+	gnulibc (for argp)
+
+
+INSTALLATION:
+	To install bfl, run the make as follows:
+		make 
+		make install
+		
+HOMEPAGE:
+		https://gitlab.com/sramsubbu/bfinterpreter
+
+USAGE:
+	bfl [OPTIONS] [SRC_FILE]
+	check the bfl man page for more details	
+
+BUGS:
+	In case of bugs mailto Ramasubramanian S<sramsubu@gmail.com>
+
+
