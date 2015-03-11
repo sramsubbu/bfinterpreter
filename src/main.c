@@ -84,6 +84,7 @@ main(int argc,char *argv[])
 
 	arguments.debug = 0;
 	arguments.output_file = "tmp.c";
+	arguments.compile = 0;
 	argp_parse(&argp,argc,argv,0,0,&arguments);
 		
 	code = read_file(arguments.src_file);

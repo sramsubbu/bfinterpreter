@@ -22,6 +22,12 @@
 #define MAXSIZE 1000
 #define STACKSIZE 500
 
+int data[MAXSIZE];
+int stack[STACKSIZE];
+int dp = MAXSIZE/2;
+int SP = -1;
+long pc = 0;
+
 int 
 interpret_file(code_t co)
 {
@@ -32,12 +38,12 @@ interpret_file(code_t co)
 	 * This includes whitespaces and newlines. 
 	 * This can be used as a powerful feature of the language to add comments wherever necessary :P
 	 */
-	int data[MAXSIZE];
+/*	int data[MAXSIZE];
 	int stack[STACKSIZE];
 	int dp = MAXSIZE/2;
-	int SP = -1;
+	int SP = -1;*/
 	int i;
-	long pc=0;
+//	long pc=0;
 	char *code = co.code;
 
 	for(i=0;i<MAXSIZE;i++)
@@ -84,7 +90,10 @@ interpret_file(code_t co)
 	}
 	return 0;
 }
-
+/*
+ * read the chars from the bf file and copy it to the
+ * buffer for processing
+ */
 code_t
 read_file(const char *filename)
 {	
@@ -104,6 +113,4 @@ read_file(const char *filename)
 	*(code.code)='\0';
 	code.code -= code.length;
 	return code;
-//	interpreter(code);
-//	return 0;
 }
