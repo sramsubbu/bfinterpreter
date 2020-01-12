@@ -44,6 +44,7 @@ interpret_file(code_t co)
 	int SP = -1;*/
 	int i;
 //	long pc=0;
+	int local_pc, loop_tracker;
 	char *code = co.code;
 
 	for(i=0;i<MAXSIZE;i++)
@@ -73,12 +74,24 @@ interpret_file(code_t co)
 				data[dp] = getchar();
 				break;
 			case '[':
-				if (!data[dp])
-					while(c!=']')
-						c = code[pc++];
-				else
-					stack[++SP] =pc;
-				break;
+			  //if (!data[dp])
+			  //		while(c!=']')
+			  //			c = code[pc++];
+			  //	else
+			  //		stack[++SP] =pc;
+			  //	break;
+			  if(!data[dp]) {
+			    local_pc = i;
+			    loop_tracker = 1;
+			    while(loop_tracker != 0 || ch != ']'){
+			      c = code[local_pc];
+			      if(c == '[') loop_tracker += 1;
+			      if(c == ']') loop_tracker -= 1;
+			      local_pc += 1;
+			    }
+			    pc = local_pc-1;
+			    break;
+			  }
 			case ']':
 				if ( data[dp])
 					pc = stack[SP];
