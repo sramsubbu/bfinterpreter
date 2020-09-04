@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <bf.h>
-#define MAXSIZE 1000
+#define MAXSIZE 30000
 #define STACKSIZE 500
 
 int data[MAXSIZE];
@@ -44,7 +44,8 @@ interpret_file(code_t co)
 	int SP = -1;*/
 	int i;
 //	long pc=0;
-	int local_pc, loop_tracker;
+	int loop_tracker;
+    unsigned int local_pc;
     char temp;
 	char *code = co.code;
 
@@ -131,5 +132,6 @@ read_file(const char *filename)
 		*(code.code)++ = c;
 	*(code.code)='\0';
 	code.code -= code.length;
+    printf("File size: %d\n",code.length);
 	return code;
 }

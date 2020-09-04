@@ -86,7 +86,7 @@ main(int argc,char *argv[])
 	arguments.output_file = "tmp.c";
 	arguments.compile = 0;
 	argp_parse(&argp,argc,argv,0,0,&arguments);
-		
+
 	code = read_file(arguments.src_file);
 	if(arguments.compile)
 		ret = bftoc(code,arguments.output_file);
